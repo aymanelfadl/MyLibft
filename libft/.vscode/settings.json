@@ -1,0 +1,8 @@
+{
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 100,
+    "files.associations": {
+        "stdlib.h": "c",
+        "stdio.h": "c"
+    }
+}
