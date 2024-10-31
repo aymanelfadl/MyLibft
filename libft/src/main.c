@@ -397,6 +397,34 @@ void run_ft_strdup_tests(void)
     test_ft_strdup("!@#$%^&*()", strdup("!@#$%^&*()"));
 }
 
+// ============ ft_strjoin tests =================
+
+void test_ft_strjoin(const char *s1, const char *s2, const char *expected)
+{
+    char *result;
+
+    result = ft_strjoin(s1, s2);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_strjoin(\"%s\", \"%s\") = \"%s\"\n", s1, s2, result);
+    else
+        printf("FAIL: ft_strjoin(\"%s\", \"%s\") = \"%s\", expected \"%s\"\n", s1, s2, result, expected);
+    free(result);
+}
+
+void run_ft_strjoin_tests(void)
+{
+    test_ft_strjoin("hello", "world", "helloworld");
+    test_ft_strjoin("", "world", "world");
+    test_ft_strjoin("hello", "", "hello");
+    test_ft_strjoin("", "", "");
+    test_ft_strjoin("foo", "bar", "foobar");
+    test_ft_strjoin("123", "456", "123456");
+    test_ft_strjoin("!@#", "$%^", "!@#$%^");
+    test_ft_strjoin(NULL, "world", NULL); // Edge case: s1 is NULL
+    test_ft_strjoin("hello", NULL, NULL); // Edge case: s2 is NULL
+    test_ft_strjoin(NULL, NULL, NULL);    // Edge case: both s1 and s2 are NULL
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -467,6 +495,10 @@ int main(void)
     printf("Running ft_strdup tests...\n");
     run_ft_strdup_tests();
     printf("ft_strdup tests completed.\n");
+
+    printf("Running ft_strjoin tests...\n");
+    run_ft_strjoin_tests();
+    printf("ft_strjoin tests completed.\n");
 
     return (0);
 }
