@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <ctype.h>
+#include <string.h>
 
 // ============ ft_atoi tests =================
 void test_ft_atoi(const char *str, int expected)
@@ -269,6 +270,34 @@ void run_ft_strncmp_tests(void)
     test_ft_strncmp("", "a", 1, strncmp("", "a", 1));
 }
 
+// ============ ft_strnstr tests =================
+
+void test_ft_strnstr(const char *haystack, const char *needle, size_t len, char *expected)
+{
+    const char *result;
+
+    result = ft_strnstr(haystack, needle, len);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_strnstr(\"%s\", \"%s\", %zu) = \"%s\"\n", haystack, needle, len, result);
+    else
+        printf("FAIL: ft_strnstr(\"%s\", \"%s\", %zu) = \"%s\", expected \"%s\"\n", haystack, needle, len, result, expected);
+}
+
+void run_ft_strnstr_tests(void)
+{
+    test_ft_strnstr("0123456789", "56789", 10, "56789");
+    test_ft_strnstr("0123456789", "56789", 5, NULL);
+    test_ft_strnstr("0123456789", "", 10, "0123456789");
+    test_ft_strnstr("", "56789", 10, NULL);
+    test_ft_strnstr("0123456789", "345", 8, "3456789");
+    test_ft_strnstr("0123456789", "345", 3, NULL);
+    test_ft_strnstr("01234", "0123456789", 10, NULL);
+    test_ft_strnstr("01234", "01234", 5, "01234");
+    test_ft_strnstr("01234", "01234", 4, NULL);
+    test_ft_strnstr("01234", "34", 5, "34");
+    test_ft_strnstr("01234", "34", 4, NULL);
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -319,6 +348,10 @@ int main(void)
     printf("Running ft_strncmp tests...\n");
     run_ft_strncmp_tests();
     printf("ft_strncmp tests completed.\n");
+
+    printf("Running ft_strnstr tests...\n");
+    run_ft_strnstr_tests();
+    printf("ft_strnstr tests completed.\n");
 
     return (0);
 }
