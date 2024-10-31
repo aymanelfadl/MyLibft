@@ -7,19 +7,29 @@ char *ft_strtrim(char const *s1, char const *set)
 	size_t i;
 	char *ptr;
 
+	if (!s1 || !set)
+		return (NULL);
+
 	start = 0;
 	end = 0;
 	i = 0;
-	while (strchr(set, s1[i++]))
+	while (s1[i] && ft_strchr(set, s1[i]))
+	{
 		start++;
-	i = strlen(s1);
-	while (strchr(set, s1[--i]))
+		i++;
+	}
+	i = ft_strlen(s1);
+	while (i > start && ft_strchr(set, s1[i - 1]))
+	{
 		end++;
-	ptr = (char *)malloc((strlen(s1) - (start + end) + 1) * sizeof(char));
+		i--;
+	}
+	ptr = (char *)malloc((ft_strlen(s1) - start - end + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
 	i = 0;
-	while (start < strlen(s1) - end)
+	while (start < ft_strlen(s1) - end)
 		ptr[i++] = s1[start++];
+	ptr[i] = '\0';
 	return (ptr);
 }

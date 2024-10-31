@@ -346,6 +346,34 @@ void run_ft_strrchr_tests(void)
     test_ft_strrchr("", '\0', strrchr("", '\0'));
 }
 
+// ============ ft_strtrim tests =================
+void test_ft_strtrim(const char *s1, const char *set, const char *expected)
+{
+    char *result;
+
+    result = ft_strtrim(s1, set);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_strtrim(\"%s\", \"%s\") = \"%s\"\n", s1, set, result);
+    else
+        printf("FAIL: ft_strtrim(\"%s\", \"%s\") = \"%s\", expected \"%s\"\n", s1, set, result, expected);
+    free(result);
+}
+
+void run_ft_strtrim_tests(void)
+{
+    test_ft_strtrim("   hello   ", " ", "hello");
+    test_ft_strtrim("   hello world   ", " ", "hello world");
+    test_ft_strtrim("xxhelloxx", "x", "hello");
+    test_ft_strtrim("xxhelloxx", "y", "xxhelloxx");
+    test_ft_strtrim("   ", " ", "");
+    test_ft_strtrim("", " ", "");
+    test_ft_strtrim("hello", "", "hello");
+    test_ft_strtrim("hello", " ", "hello");
+    test_ft_strtrim("   hello", " ", "hello");
+    test_ft_strtrim("hello   ", " ", "hello");
+    test_ft_strtrim("   hello   ", "ol ", "he");
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -408,6 +436,10 @@ int main(void)
     printf("Running ft_strrchr tests...\n");
     run_ft_strrchr_tests();
     printf("ft_strrchr tests completed.\n");
+
+    printf("Running ft_strtrim tests...\n");
+    run_ft_strtrim_tests();
+    printf("ft_strtrim tests completed.\n");
 
     return (0);
 }
