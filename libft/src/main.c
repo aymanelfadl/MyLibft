@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <ctype.h>
+
 // ============ ft_atoi tests =================
 void test_ft_atoi(const char *str, int expected)
 {
@@ -13,20 +14,19 @@ void test_ft_atoi(const char *str, int expected)
     else
         printf("FAIL: ft_atoi(\"%s\") = %d, expected %d\n", str, result,
                expected);
-	
 }
 
 void run_ft_atoi_tests(void)
 {
-    test_ft_atoi("123", atoi("123"));  
- 	test_ft_atoi("-123", atoi("-123"));
-    test_ft_atoi("   123",  atoi("    123"));
-    test_ft_atoi("   -123",  atoi("    -123"));
-    test_ft_atoi("+123",  atoi("+123"));
-    test_ft_atoi("000123",  atoi("000123"));
-    test_ft_atoi("123abc",  atoi("123abc"));
+    test_ft_atoi("123", atoi("123"));
+    test_ft_atoi("-123", atoi("-123"));
+    test_ft_atoi("   123", atoi("    123"));
+    test_ft_atoi("   -123", atoi("    -123"));
+    test_ft_atoi("+123", atoi("+123"));
+    test_ft_atoi("000123", atoi("000123"));
+    test_ft_atoi("123abc", atoi("123abc"));
     test_ft_atoi("abc", atoi("abc"));
-    test_ft_atoi("",  atoi(""));
+    test_ft_atoi("", atoi(""));
     test_ft_atoi("   ", atoi("    "));
     test_ft_atoi("-2147483648", atoi("-2147483648"));
 }
@@ -69,9 +69,9 @@ void test_ft_isalnum(int c, int expected)
 void run_ft_isalnum_tests(void)
 {
     test_ft_isalnum('a', isalnum('a'));
-    test_ft_isalnum('1',isalnum('1'));
-    test_ft_isalnum('!',isalnum('!'));
-    test_ft_isalnum(' ',isalnum(' '));
+    test_ft_isalnum('1', isalnum('1'));
+    test_ft_isalnum('!', isalnum('!'));
+    test_ft_isalnum(' ', isalnum(' '));
 }
 
 // ============ ft_isalpha tests =================
@@ -160,63 +160,87 @@ void run_ft_isdigit_tests(void)
 
 void test_ft_strlen(const char *c, size_t expected)
 {
-	size_t result;
+    size_t result;
 
-	result = ft_strlen(c);
-	if (result == expected)
-		printf("PASS: ft_strlen('%s') = %zu\n", c, result);
-	else
-		printf("FAIL: ft_strlen('%s') = %zu\n, expected %zu", c, result, expected);
+    result = ft_strlen(c);
+    if (result == expected)
+        printf("PASS: ft_strlen('%s') = %zu\n", c, result);
+    else
+        printf("FAIL: ft_strlen('%s') = %zu\n, expected %zu", c, result, expected);
 }
 
 void run_ft_strlen_tests(void)
 {
-	test_ft_strlen("ayman", 5);
-	test_ft_strlen("", 0);
+    test_ft_strlen("ayman", 5);
+    test_ft_strlen("", 0);
 }
 
 // =============== ft_tolower tests ===============
 
 void test_ft_tolower(int c, int expected)
 {
-	int result;
+    int result;
 
-	result = ft_tolower(c);
-	if (result == expected)
-		printf("PASS: ft_tolower('%c') = %c\n", c, result);
-	else
-		printf("PASS: ft_tolower('%c') = %c\n", c, result);
+    result = ft_tolower(c);
+    if (result == expected)
+        printf("PASS: ft_tolower('%c') = %c\n", c, result);
+    else
+        printf("PASS: ft_tolower('%c') = %c\n", c, result);
 }
 
 void run_ft_tolower_tests(void)
 {
-	test_ft_tolower('a',tolower('a'));
-	test_ft_tolower(0, tolower(0));
-	test_ft_tolower('Z', tolower('Z'));
-
+    test_ft_tolower('a', tolower('a'));
+    test_ft_tolower(0, tolower(0));
+    test_ft_tolower('Z', tolower('Z'));
 }
 
 // =============== ft_tolower tests ===============
 
 void test_ft_toupper(int c, int expected)
 {
-	int result;
+    int result;
 
-	result = ft_toupper(c);
-	if (result == expected)
-		printf("PASS: ft_toupper('%c') = %c\n", c, result);
-	else
-		printf("PASS: ft_toupper('%c') = %c\n", c, result);
+    result = ft_toupper(c);
+    if (result == expected)
+        printf("PASS: ft_toupper('%c') = %c\n", c, result);
+    else
+        printf("PASS: ft_toupper('%c') = %c\n", c, result);
 }
 
 void run_ft_toupper_tests(void)
 {
-	test_ft_toupper('a',toupper('a'));
-	test_ft_toupper(0, toupper(0));
-	test_ft_toupper('Z', toupper('Z'));
+    test_ft_toupper('a', toupper('a'));
+    test_ft_toupper(0, toupper(0));
+    test_ft_toupper('Z', toupper('Z'));
+}
+#include "libft.h"
+#include <stdio.h>
 
+// ============ ft_substr tests =================
+void test_ft_substr(const char *s, unsigned int start, size_t len, const char *expected)
+{
+    char *result;
+
+    result = ft_substr(s, start, len);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_substr(\"%s\", %u, %zu) = \"%s\"\n", s, start, len, result);
+    else
+        printf("FAIL: ft_substr(\"%s\", %u, %zu) = \"%s\", expected \"%s\"\n", s, start, len, result, expected);
+    free(result);
 }
 
+void run_ft_substr_tests(void)
+{
+    test_ft_substr("0123456789", 7, 5, "789");
+    test_ft_substr("", 0, 5, "");
+    test_ft_substr("0123456789", 7, 20, "789");
+    test_ft_substr("0123456789", 10, 5, "");
+    test_ft_substr("0123456789", 20, 5, "");
+    test_ft_substr("", 0, 5, "");
+    test_ft_substr("0123456789", 10, 5, "");
+    test_ft_substr("0123456789", 3, 0, "");
+}
 
 // ================== Main =======================
 int main(void)
@@ -248,19 +272,22 @@ int main(void)
     printf("Running ft_isprint tests...\n");
     run_ft_isprint_tests();
     printf("ft_isprint tests completed.\n");
-	
-	printf("Running ft_strlen tests...\n");
-    run_ft_strlen_tests();
- 	printf("ft_strlen tests completed.\n");
-  	
-	printf("Running ft_tolower tests...\n");
-    run_ft_tolower_tests();
- 	printf("ft_tolower tests completed.\n");
 
-	printf("Running ft_toupper tests...\n");
+    printf("Running ft_strlen tests...\n");
+    run_ft_strlen_tests();
+    printf("ft_strlen tests completed.\n");
+
+    printf("Running ft_tolower tests...\n");
+    run_ft_tolower_tests();
+    printf("ft_tolower tests completed.\n");
+
+    printf("Running ft_toupper tests...\n");
     run_ft_toupper_tests();
- 	printf("ft_toupper tests completed.\n");
-   
- 
-   	return (0);
+    printf("ft_toupper tests completed.\n");
+
+    printf("Running ft_substr tests...\n");
+    run_ft_substr_tests();
+    printf("ft_substr tests completed.\n");
+
+    return (0);
 }
