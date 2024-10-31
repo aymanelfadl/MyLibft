@@ -420,9 +420,39 @@ void run_ft_strjoin_tests(void)
     test_ft_strjoin("foo", "bar", "foobar");
     test_ft_strjoin("123", "456", "123456");
     test_ft_strjoin("!@#", "$%^", "!@#$%^");
-    test_ft_strjoin(NULL, "world", NULL); // Edge case: s1 is NULL
-    test_ft_strjoin("hello", NULL, NULL); // Edge case: s2 is NULL
-    test_ft_strjoin(NULL, NULL, NULL);    // Edge case: both s1 and s2 are NULL
+    test_ft_strjoin(NULL, "world", NULL);
+    test_ft_strjoin("hello", NULL, NULL);
+    test_ft_strjoin(NULL, NULL, NULL);
+}
+
+// ============ ft_strmapi tests =================
+
+char test_func(unsigned int i, char c)
+{
+    return c + i;
+}
+
+void test_ft_strmapi(const char *s, char (*f)(unsigned int, char), const char *expected)
+{
+    char *result;
+
+    result = ft_strmapi(s, f);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_strmapi(\"%s\", f) = \"%s\"\n", s, result);
+    else
+        printf("FAIL: ft_strmapi(\"%s\", f) = \"%s\", expected \"%s\"\n", s, result, expected);
+    free(result);
+}
+
+void run_ft_strmapi_tests(void)
+{
+    test_ft_strmapi("abc", test_func, "ace");
+    test_ft_strmapi("", test_func, "");
+    test_ft_strmapi("123", test_func, "135");
+    test_ft_strmapi("abc", test_func, "ace");
+    test_ft_strmapi("hello", test_func, "hfnos");
+    test_ft_strmapi(NULL, test_func, NULL);
+    test_ft_strmapi("hello", NULL, NULL);
 }
 
 // ================== Main =======================
@@ -499,6 +529,10 @@ int main(void)
     printf("Running ft_strjoin tests...\n");
     run_ft_strjoin_tests();
     printf("ft_strjoin tests completed.\n");
+
+    printf("Running ft_strmapi tests...\n");
+    run_ft_strmapi_tests();
+    printf("ft_strmapi tests completed.\n");
 
     return (0);
 }

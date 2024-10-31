@@ -15,4 +15,5 @@ ft_strchr
 ft_strrchr
 ft_strtrim
 ft_strdup
+ft_strjoin
 
