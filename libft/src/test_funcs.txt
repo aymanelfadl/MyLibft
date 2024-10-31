@@ -12,3 +12,4 @@ ft_substr
 ft_strncmp
 ft_strnstr
 ft_strchr
+ft_strrchr
