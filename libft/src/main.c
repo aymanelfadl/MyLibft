@@ -298,6 +298,30 @@ void run_ft_strnstr_tests(void)
     test_ft_strnstr("01234", "34", 4, NULL);
 }
 
+// ============ ft_strchr tests =================
+
+void test_ft_strchr(const char *s, int c, const char *expected)
+{
+    const char *result;
+
+    result = ft_strchr(s, c);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_strchr(\"%s\", '%c') = \"%s\"\n", s, c, result);
+    else
+        printf("FAIL: ft_strchr(\"%s\", '%c') = \"%s\", expected \"%s\"\n", s, c, result, expected);
+}
+
+void run_ft_strchr_tests(void)
+{
+    test_ft_strchr("hello", 'e', strchr("hello", 'e'));
+    test_ft_strchr("hello", 'l', strchr("hello", 'l'));
+    test_ft_strchr("hello", 'o', strchr("hello", 'o'));
+    test_ft_strchr("hello", 'x', strchr("hello", 'x'));
+    test_ft_strchr("hello", '\0', strchr("hello", '\0'));
+    test_ft_strchr("", 'a', strchr("", 'a'));
+    test_ft_strchr("", '\0', strchr("", '\0'));
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -352,6 +376,10 @@ int main(void)
     printf("Running ft_strnstr tests...\n");
     run_ft_strnstr_tests();
     printf("ft_strnstr tests completed.\n");
+
+    printf("Running ft_strchr tests...\n");
+    run_ft_strchr_tests();
+    printf("ft_strchr tests completed.\n");
 
     return (0);
 }
