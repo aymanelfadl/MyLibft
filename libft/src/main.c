@@ -242,6 +242,33 @@ void run_ft_substr_tests(void)
     test_ft_substr("0123456789", 3, 0, "");
 }
 
+// ============ ft_strncmp tests =================
+void test_ft_strncmp(const char *s1, const char *s2, size_t n, int expected)
+{
+    int result;
+
+    result = ft_strncmp(s1, s2, n);
+    if (result == expected)
+        printf("PASS: ft_strncmp(\"%s\", \"%s\", %zu) = %d\n", s1, s2, n, result);
+    else
+        printf("FAIL: ft_strncmp(\"%s\", \"%s\", %zu) = %d, expected %d\n", s1, s2, n, result, expected);
+}
+
+void run_ft_strncmp_tests(void)
+{
+    test_ft_strncmp("abc", "abc", 3, strncmp("abc", "abc", 3));
+    test_ft_strncmp("abc", "abd", 3, strncmp("abc", "abd", 3));
+    test_ft_strncmp("abc", "abcd", 3, strncmp("abc", "abcd", 3));
+    test_ft_strncmp("abcd", "abc", 3, strncmp("abcd", "abc", 3));
+    test_ft_strncmp("abc", "abc", 0, strncmp("abc", "abc", 0));
+    test_ft_strncmp("abc", "abc", 1, strncmp("abc", "abc", 1));
+    test_ft_strncmp("abc", "abd", 2, strncmp("abc", "abd", 2));
+    test_ft_strncmp("abc", "abd", 4, strncmp("abc", "abd", 4));
+    test_ft_strncmp("", "", 1, strncmp("", "", 1));
+    test_ft_strncmp("a", "", 1, strncmp("a", "", 1));
+    test_ft_strncmp("", "a", 1, strncmp("", "a", 1));
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -288,6 +315,10 @@ int main(void)
     printf("Running ft_substr tests...\n");
     run_ft_substr_tests();
     printf("ft_substr tests completed.\n");
+
+    printf("Running ft_strncmp tests...\n");
+    run_ft_strncmp_tests();
+    printf("ft_strncmp tests completed.\n");
 
     return (0);
 }

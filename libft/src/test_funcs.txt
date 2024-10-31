@@ -8,4 +8,6 @@ ft_isprint
 ft_strlen
 ft_tolower
 ft_toupper
+ft_substr
+ft_strncmp
 
