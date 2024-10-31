@@ -374,6 +374,29 @@ void run_ft_strtrim_tests(void)
     test_ft_strtrim("   hello   ", "ol ", "he");
 }
 
+// ============ ft_strdup tests =================
+void test_ft_strdup(const char *s, const char *expected)
+{
+    char *result;
+
+    result = ft_strdup(s);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_strdup(\"%s\") = \"%s\"\n", s, result);
+    else
+        printf("FAIL: ft_strdup(\"%s\") = \"%s\", expected \"%s\"\n", s, result, expected);
+    free(result);
+}
+
+void run_ft_strdup_tests(void)
+{
+    test_ft_strdup("hello", strdup("hello"));
+    test_ft_strdup("", strdup(""));
+    test_ft_strdup("a", strdup("a"));
+    test_ft_strdup("This is a longer string to test ft_strdup.", strdup("This is a longer string to test ft_strdup."));
+    test_ft_strdup("1234567890", strdup("1234567890"));
+    test_ft_strdup("!@#$%^&*()", strdup("!@#$%^&*()"));
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -440,6 +463,10 @@ int main(void)
     printf("Running ft_strtrim tests...\n");
     run_ft_strtrim_tests();
     printf("ft_strtrim tests completed.\n");
+
+    printf("Running ft_strdup tests...\n");
+    run_ft_strdup_tests();
+    printf("ft_strdup tests completed.\n");
 
     return (0);
 }

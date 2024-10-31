@@ -13,4 +13,6 @@ ft_strncmp
 ft_strnstr
 ft_strchr
 ft_strrchr
+ft_strtrim
+ft_strdup
 
