@@ -3,6 +3,14 @@
 #include "libft.h"
 int main()
 {
-	char str[20] = "0123456789\0 1111";
-	printf("%s\n", ft_substr(str, 12, 4));
+	char **res = ft_split(0, '\0');
+	if (res == 0)
+	{
+		printf("ha9e");
+		return 0;
+	}
+	for (size_t i = 0; i < 2; i++)
+	{
+		printf("%s", res[i]);
+	}
 }

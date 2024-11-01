@@ -33,7 +33,6 @@ static char *ft_strdupme(char const *str, int start, int end)
 	while (start < end)
 	{
 		res[i++] = str[start++];
-		;
 	}
 	res[i] = '\0';
 	return (res);
@@ -46,13 +45,16 @@ char **ft_split(char const *s, char c)
 	int mark;
 	int j;
 
+	if (s == NULL)
+		return (NULL);
+
 	i = 0;
 	mark = -1;
 	j = 0;
 	res = (char **)malloc((ft_wc(s, c) + 1) * sizeof(char *));
 	if (res == NULL)
 		return (NULL);
-	while (i <= strlen(s))
+	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && mark < 0 && s[i] != '\0')
 			mark = i;

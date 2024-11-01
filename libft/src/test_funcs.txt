@@ -17,3 +17,4 @@ ft_strtrim
 ft_strdup
 ft_strjoin
 ft_strmapi
+ft_strsplit
