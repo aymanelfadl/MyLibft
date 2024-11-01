@@ -614,6 +614,90 @@ void run_ft_memcpy_tests(void)
     test_ft_memcpy(dest3, src3, 0, memcpy(dest3, src3, 0));
 }
 
+// ============ ft_memmove tests =================
+void test_ft_memmove(void *dest, const void *src, size_t n, void *expected)
+{
+    void *result;
+
+    result = ft_memmove(dest, src, n);
+    if (memcmp(result, expected, n) == 0)
+        printf("PASS: ft_memmove(%p, %p, %zu) = %p\n", dest, src, n, result);
+    else
+        printf("FAIL: ft_memmove(%p, %p, %zu) = %p, expected %p\n", dest, src, n, result, expected);
+}
+
+void run_ft_memmove_tests(void)
+{
+    char dest1[10] = "abcdefghi";
+    char src1[10] = "123456789";
+    test_ft_memmove(dest1, src1, 10, memmove(dest1, src1, 10));
+
+    char dest2[10] = "abcdefghi";
+    char src2[10] = "123";
+    test_ft_memmove(dest2, src2, 4, memmove(dest2, src2, 4));
+
+    char dest3[10] = "abcdefghi";
+    char src3[10] = "";
+    test_ft_memmove(dest3, src3, 0, memmove(dest3, src3, 0));
+
+    char dest4[10] = "abcdefghi";
+    test_ft_memmove(dest4 + 2, dest4, 5, memmove(dest4 + 2, dest4, 5));
+
+    char dest5[10] = "abcdefghi";
+    test_ft_memmove(dest5, dest5 + 2, 5, memmove(dest5, dest5 + 2, 5));
+}
+
+// ============ ft_bzero tests =================
+void test_ft_bzero(void *s, size_t n, void *expected, size_t size)
+{
+    ft_bzero(s, n);
+    if (memcmp(s, expected, size) == 0)
+        printf("PASS: ft_bzero(%p, %zu)\n", s, n);
+    else
+        printf("FAIL: ft_bzero(%p, %zu)\n", s, n);
+}
+
+void run_ft_bzero_tests(void)
+{
+    char buffer1[10] = "abcdefghi";
+    char expected1[10] = "\0\0\0\0\0fghi";
+    test_ft_bzero(buffer1, 5, expected1, 10);
+
+    char buffer2[10] = "abcdefghi";
+    char expected2[10] = "\0\0\0\0\0\0\0\0\0\0";
+    test_ft_bzero(buffer2, 10, expected2, 10);
+
+    char buffer3[10] = "abcdefghi";
+    char expected3[10] = "abcdefghi";
+    test_ft_bzero(buffer3, 0, expected3, 10);
+}
+
+// ============ ft_memcmp tests =================
+void test_ft_memcmp(void *s1, const void *s2, size_t n, int expected)
+{
+    int result;
+
+    result = ft_memcmp(s1, s2, n);
+    if (result == expected)
+        printf("PASS: ft_memcmp(%p, %p, %zu) = %d\n", s1, s2, n, result);
+    else
+        printf("FAIL: ft_memcmp(%p, %p, %zu) = %d, expected %d\n", s1, s2, n, result, expected);
+}
+
+void run_ft_memcmp_tests(void)
+{
+    char buffer1[10] = "abcdefghi";
+    char buffer2[10] = "abcdefghi";
+    char buffer3[10] = "abcdezzzz";
+    char buffer4[10] = "zzzzzzzzz";
+
+    test_ft_memcmp(buffer1, buffer2, 10, memcmp(buffer1, buffer2, 10));
+    test_ft_memcmp(buffer1, buffer3, 5, memcmp(buffer1, buffer3, 5));
+    test_ft_memcmp(buffer1, buffer3, 10, memcmp(buffer1, buffer3, 10));
+    test_ft_memcmp(buffer1, buffer4, 0, memcmp(buffer1, buffer4, 0));
+    test_ft_memcmp(buffer1, buffer4, 1, memcmp(buffer1, buffer4, 1));
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -712,6 +796,18 @@ int main(void)
     printf("Running ft_memcpy tests...\n");
     run_ft_memcpy_tests();
     printf("ft_memcpy tests completed.\n");
+
+    printf("Running ft_memmove tests...\n");
+    run_ft_memmove_tests();
+    printf("ft_memmove tests completed.\n");
+
+    printf("Running ft_bzero tests...\n");
+    run_ft_bzero_tests();
+    printf("ft_bzero tests completed.\n");
+
+    printf("Running ft_memcmp tests...\n");
+    run_ft_memcmp_tests();
+    printf("ft_memcmp tests completed.\n");
 
     return (0);
 }

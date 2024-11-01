@@ -3,7 +3,7 @@
 #include "libft.h"
 int main()
 {
-	char dest4[10] = "123456789";
-	ft_memcpy(dest4, dest4, 2);
+	char dest4[] = "123456789";
+	ft_memcpy(dest4 + 1, dest4, 10);
 	printf("dest4: %s\n", dest4);
 }

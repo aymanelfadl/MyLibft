@@ -21,3 +21,7 @@ ft_strsplit
 ft_striteri
 ft_memset
 ft_memcpy
+ft_memchr
+ft_memmove
+ft_memcmp
+ft_bzero
