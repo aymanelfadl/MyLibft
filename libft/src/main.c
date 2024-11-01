@@ -503,6 +503,40 @@ void run_ft_split_tests(void)
     test_ft_split("", ' ', expected4);
 }
 
+// ============ ft_striteri tests =================
+
+// Helper function for ft_striteri
+void test_func1(unsigned int i, char *c)
+{
+    *c = *c + i;
+}
+
+void test_ft_striteri(char *s, void (*f)(unsigned int, char *), const char *expected)
+{
+    char *original = strdup(s);
+    ft_striteri(s, f);
+    if (strcmp(s, expected) == 0)
+        printf("PASS: ft_striteri(\"%s\", f) = \"%s\"\n", original, s);
+    else
+        printf("FAIL: ft_striteri(\"%s\", f) = \"%s\", expected \"%s\"\n", original, s, expected);
+    free(original);
+}
+
+void run_ft_striteri_tests(void)
+{
+    char s1[] = "abc";
+    char s2[] = "";
+    char s3[] = "123";
+    char s4[] = "a";
+    char s5[] = "z";
+
+    test_ft_striteri(s1, test_func1, "ace");
+    test_ft_striteri(s2, test_func1, "");
+    test_ft_striteri(s3, test_func1, "135");
+    test_ft_striteri(s4, test_func1, "a");
+    test_ft_striteri(s5, test_func1, "z");
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -585,6 +619,10 @@ int main(void)
     printf("Running ft_split tests...\n");
     run_ft_split_tests();
     printf("ft_split tests completed.\n");
+
+    printf("Running ft_striteri tests...\n");
+    run_ft_striteri_tests();
+    printf("ft_striteri tests completed.\n");
 
     return (0);
 }
