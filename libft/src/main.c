@@ -537,6 +537,83 @@ void run_ft_striteri_tests(void)
     test_ft_striteri(s5, test_func1, "z");
 }
 
+// ============ ft_memset tests =================
+
+void test_ft_memset(void *b, int c, size_t len, void *expected)
+{
+    void *result;
+
+    result = ft_memset(b, c, len);
+    if (memcmp(result, expected, len) == 0)
+        printf("PASS: ft_memset(%p, %d, %zu) = %p\n", b, c, len, result);
+    else
+        printf("FAIL: ft_memset(%p, %d, %zu) = %p, expected %p\n", b, c, len, result, expected);
+}
+
+void run_ft_memset_tests(void)
+{
+    char buffer1[10] = "abcdefghi";
+    char buffer3[10] = "abcdefghi";
+    char buffer4[10] = "abcdefghi";
+    char buffer5[10] = "abcdefghi";
+
+    test_ft_memset(buffer1, 'x', 5, memset(buffer1, 'x', 5));
+    test_ft_memset(buffer3, 'z', 10, memset(buffer3, 'z', 10));
+    test_ft_memset(buffer4, 0, 5, memset(buffer4, 0, 5));
+    test_ft_memset(buffer5, 255, 5, memset(buffer5, 255, 5));
+}
+
+// ============ ft_memchr tests =================
+void test_ft_memchr(const void *s, int c, size_t n, void *expected)
+{
+    void *result;
+
+    result = ft_memchr(s, c, n);
+    if (result == expected)
+        printf("PASS: ft_memchr(%p, %d, %zu) = %p\n", s, c, n, result);
+    else
+        printf("FAIL: ft_memchr(%p, %d, %zu) = %p, expected %p\n", s, c, n, result, expected);
+}
+
+void run_ft_memchr_tests(void)
+{
+    char buffer1[10] = "abcdefghi";
+    char buffer2[10] = "abcdefghi";
+    char buffer3[10] = "abcdefghi";
+    char buffer4[10] = "abcdefghi";
+
+    test_ft_memchr(buffer1, 'c', 5, memchr(buffer1, 'c', 5));
+    test_ft_memchr(buffer2, 'z', 10, memchr(buffer2, 'z', 10));
+    test_ft_memchr(buffer3, 0, 5, memchr(buffer3, 0, 5));
+    test_ft_memchr(buffer4, 255, 5, memchr(buffer4, 255, 5));
+}
+
+// ============ ft_memcpy tests =================
+void test_ft_memcpy(void *dest, const void *src, size_t n, void *expected)
+{
+    void *result;
+
+    result = ft_memcpy(dest, src, n);
+    if (memcmp(result, expected, n) == 0)
+        printf("PASS: ft_memcpy(%p, %p, %zu) = %p\n", dest, src, n, result);
+    else
+        printf("FAIL: ft_memcpy(%p, %p, %zu) = %p, expected %p\n", dest, src, n, result, expected);
+}
+void run_ft_memcpy_tests(void)
+{
+    char dest1[10] = "abcdefghi";
+    char src1[10] = "123456789";
+    test_ft_memcpy(dest1, src1, 10, memcpy(dest1, src1, 10));
+
+    char dest2[10] = "abcdefghi";
+    char src2[10] = "123";
+    test_ft_memcpy(dest2, src2, 4, memcpy(dest2, src2, 5));
+
+    char dest3[10] = "abcdefghi";
+    char src3[10] = "";
+    test_ft_memcpy(dest3, src3, 0, memcpy(dest3, src3, 0));
+}
+
 // ================== Main =======================
 int main(void)
 {
@@ -623,6 +700,18 @@ int main(void)
     printf("Running ft_striteri tests...\n");
     run_ft_striteri_tests();
     printf("ft_striteri tests completed.\n");
+
+    printf("Running ft_memset tests...\n");
+    run_ft_memset_tests();
+    printf("ft_memset tests completed.\n");
+
+    printf("Running ft_memchr tests...\n");
+    run_ft_memchr_tests();
+    printf("ft_memchr tests completed.\n");
+
+    printf("Running ft_memcpy tests...\n");
+    run_ft_memcpy_tests();
+    printf("ft_memcpy tests completed.\n");
 
     return (0);
 }
