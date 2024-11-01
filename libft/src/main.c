@@ -454,6 +454,27 @@ void run_ft_strmapi_tests(void)
     test_ft_strmapi(NULL, test_func, NULL);
     test_ft_strmapi("hello", NULL, NULL);
 }
+/*
+// ============ ft_split tests =================
+
+void test_ft_split(char *s, char c, char **expected)
+{
+    char **result;
+
+    result = ft_split(s, c);
+    if ((result == NULL && expected == NULL) || (result != NULL && strcmp(result, expected) == 0))
+        printf("PASS: ft_split(\"%s\",\"%c\") = \"%s\"\n", s, result);
+    else
+        printf("FAIL: ft_split(\"%s\", f) = \"%s\", expected \"%s\"\n", s, result, expected);
+    free(result);
+}
+
+void run_ft_split_tests(void)
+{
+	char *expected[] = {"1","2","3","4"};
+    test_ft_split("1 2 3 4 ", " ", &expected);
+}
+*/
 
 // ================== Main =======================
 int main(void)
@@ -471,7 +492,7 @@ int main(void)
     printf("ft_isalnum tests completed.\n");
 
     printf("Running ft_isalpha tests...\n");
-    run_ft_isalpha_tests();
+	run_ft_isalpha_tests();
     printf("ft_isalpha tests completed.\n");
 
     printf("Running ft_isascii tests...\n");
@@ -534,5 +555,11 @@ int main(void)
     run_ft_strmapi_tests();
     printf("ft_strmapi tests completed.\n");
 
+   // printf("Running ft_split tests...\n");
+   // run_ft_split_tests()
+   // printf("ft_split tests completed.\n");
+
+
+ 
     return (0);
 }
