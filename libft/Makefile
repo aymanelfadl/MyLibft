@@ -26,12 +26,8 @@ $(NAME): $(OBJS)
 bonus: $(OBJS) $(OBJS_BONUS)
 	ar $(ARFLAGS) $(NAME).a $(OBJS) $(OBJS_BONUS)
 
-so:
-	$(CC) -fPIC $(CFLAGS) -c $(SRCS)
-	gcc -shared -o libft.so $(OBJS)
-
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS) $(OBJS_BONUS)	
 
 fclean: clean
 	$(RM) $(NAME).a $(NAME).so
