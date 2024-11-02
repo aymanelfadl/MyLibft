@@ -1,9 +1,9 @@
-#include <unistd.h>
 #include <errno.h>
+#include <unistd.h>
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	if (fd < 0)
-		return;
+		return ;
 	write(fd, &c, 1);
 }

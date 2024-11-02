@@ -1,8 +1,9 @@
 {
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 100,
-    "files.associations": {
-        "stdlib.h": "c",
-        "stdio.h": "c"
-    }
+  "files.associations": {
+    "libft.h": "c",
+    "limits.h": "c"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "keyhr.42-c-format"
+  }
 }

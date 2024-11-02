@@ -1,8 +1,10 @@
 #include "libft.h"
 
-static int ft_hm(unsigned int nb)
+static int	ft_hm(unsigned int nb)
 {
-	int res = 1;
+	int	res;
+
+	res = 1;
 	while (nb / 10 > 0)
 	{
 		res++;
@@ -11,12 +13,12 @@ static int ft_hm(unsigned int nb)
 	return (res);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	unsigned int nb;
-	char *res;
-	int isnegga;
-	int t;
+	unsigned int	nb;
+	char			*res;
+	int				isnegga;
+	int				t;
 
 	if (n < 0)
 	{
@@ -28,12 +30,10 @@ char *ft_itoa(int n)
 		nb = (unsigned int)n;
 		isnegga = 0;
 	}
-
 	t = ft_hm(nb) + isnegga;
 	res = (char *)malloc((t + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
-
 	res[t] = '\0';
 	while (t-- > isnegga)
 	{

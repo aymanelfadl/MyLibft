@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	size_t len;
 	char *res;
@@ -9,7 +9,7 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (s == NULL || f == NULL)
 		return (NULL);
 
-	len = strlen(s);
+	len = ft_strlen(s);
 	res = (char *)malloc(len + 1);
 	if (res == NULL)
 		return (NULL);

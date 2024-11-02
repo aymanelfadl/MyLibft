@@ -1,9 +1,9 @@
 #include "libft.h"
 
-static int ft_wc(char const *s, char c)
+static int	ft_wc(char const *s, char c)
 {
-	int count;
-	int start;
+	int	count;
+	int	start;
 
 	start = 0;
 	count = 0;
@@ -21,10 +21,10 @@ static int ft_wc(char const *s, char c)
 	return (count);
 }
 
-static char *ft_strdupme(char const *str, int start, int end)
+static char	*ft_strdupme(char const *str, int start, int end)
 {
-	char *res;
-	int i;
+	char	*res;
+	int		i;
 
 	res = (char *)malloc(((end - start) + 1) * sizeof(char));
 	if (res == NULL)
@@ -38,7 +38,7 @@ static char *ft_strdupme(char const *str, int start, int end)
 	return (res);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char **res;
 	size_t i;

@@ -1,15 +1,14 @@
 #include "libft.h"
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t start;
-	size_t end;
-	size_t i;
-	char *ptr;
+	size_t	start;
+	size_t	end;
+	size_t	i;
+	char	*ptr;
 
 	if (!s1 || !set)
 		return (NULL);
-
 	start = 0;
 	end = 0;
 	i = 0;
