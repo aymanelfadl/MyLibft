@@ -15,3 +15,12 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_memset(ptr, 0, count * size);
 	return ((void *)ptr);
 }
+#include <limits.h>
+#include <stdio.h>
+
+int	main(void)
+{
+	int *p =malloc(10);
+	p++;
+	free(p);
+}

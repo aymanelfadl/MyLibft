@@ -7,5 +7,6 @@
   },
   "[c]": {
     "editor.defaultFormatter": "keyhr.42-c-format"
-  }
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
