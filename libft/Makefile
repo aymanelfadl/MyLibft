@@ -22,6 +22,8 @@ RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
 
+
+
 ${NAME}: ${OBJS}
 	${LIBC} ${NAME} ${OBJS}
 

@@ -16,10 +16,10 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (ft_strlen(src));
 }
-#include <stdio.h>
-#include <string.h>
-int	main(void)
-{
-	char buffer[50];
-	printf("%zu", ft_strlcpy(buffer,"ayman",0));
-}
+// #include <stdio.h>
+// #include <string.h>
+// int	main(void)
+// {
+// 	char buffer[50];
+// 	printf("%zu", ft_strlcpy(buffer,"ayman",0));
+// }
