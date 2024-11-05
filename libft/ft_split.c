@@ -52,14 +52,13 @@ static char	*ft_strdupme(char const *str, int start, int end)
 
 char	**ft_split(char const *s, char c)
 {
-	char **res;
-	size_t i;
-	int mark;
-	int j;
+	char	**res;
+	size_t	i;
+	int		mark;
+	int		j;
 
 	if (s == NULL)
 		return (NULL);
-
 	i = 0;
 	mark = -1;
 	j = 0;
