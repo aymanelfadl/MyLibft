@@ -15,56 +15,71 @@
 static int	ft_wc(char const *s, char c)
 {
 	int	count;
+	int	start;
 
+	start = 0;
 	count = 0;
 	while (*s)
 	{
-		if (*s != c && (*s == '\0' || *(s - 1) == c))
+		if (*s != c && !start && *s != '\0')
+		{
 			count++;
+			start = 1;
+		}
+		else if (*s == c)
+			start = 0;
 		s++;
 	}
 	return (count);
 }
 
-static char	*ft_strdupme(char const *s, int start, int end)
+static char	*ft_strdupme(char const *str, int start, int end)
 {
 	char	*res;
 	int		i;
 
-	res = (char *)malloc((end - start + 1) * sizeof(char));
-	if (!res)
+	res = (char *)malloc(((end - start) + 1) * sizeof(char));
+	if (res == NULL)
 		return (NULL);
 	i = 0;
 	while (start < end)
-		res[i++] = s[start++];
+	{
+		res[i++] = str[start++];
+	}
 	res[i] = '\0';
 	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**res;
-	int		i;
-	int		j;
-	int		mark;
+	char **res;
+	size_t i;
+	int mark;
+	int j;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	res = (char **)malloc((ft_wc(s, c) + 1) * sizeof(char *))
-	if (!res)
-		return (NULL);
+
 	i = 0;
-	j = 0;
 	mark = -1;
+	j = 0;
+	res = (char **)malloc((ft_wc(s, c) + 1) * sizeof(char *));
+	if (res == NULL)
+		return (NULL);
 	while (i <= ft_strlen(s))
 	{
-		if (s[i] != c && mark < 0)
+		if (s[i] != c && mark < 0 && s[i] != '\0')
 			mark = i;
 		else if ((s[i] == c || s[i] == '\0') && mark >= 0)
 		{
-			res[j++] = ft_strdupme(s, mark, i);
-			if (!res[j - 1])
+			res[j] = ft_strdupme(s, mark, i);
+			if (res[j] == NULL)
+			{
+				while (j > 0)
+					free(res[j--]);
 				return (NULL);
+			}
+			j++;
 			mark = -1;
 		}
 		i++;
