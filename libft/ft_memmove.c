@@ -6,7 +6,7 @@
 /*   By: aelfadl <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:31:58 by aelfadl           #+#    #+#             */
-/*   Updated: 2024/11/05 11:32:22 by aelfadl          ###   ########.fr       */
+/*   Updated: 2024/11/05 13:09:03 by aelfadl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,33 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	size_t	i;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (s < d)
+	if (dst < src)
 	{
-		while (len > 0)
+		i = 0;
+		while (i < len)
 		{
-			d[len] = s[len];
-			len--;
+			*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
+			i++;
+		}	
+		return (dst);
+	}
+	else
+	{
+		i = len;
+		while (i > 0)
+		{
+			i--;
+			*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
 		}
 		return (dst);
 	}
-	i = 0;
-	while (i < len)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
+}
+#include <stdio.h>
+#include <string.h>
+int main ()
+{
+	char t[]= "0123456789";
+	printf("%s\n", ft_memmove(t,t+6,5));
 }
