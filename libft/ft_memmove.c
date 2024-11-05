@@ -37,10 +37,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (dst);
 	}
 }
-#include <stdio.h>
-#include <string.h>
-int main ()
-{
-	char t[]= "0123456789";
-	printf("%s\n", ft_memmove(t,t+6,5));
-}
