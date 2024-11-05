@@ -12,77 +12,68 @@
 
 #include "libft.h"
 
-static int	ft_wc(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	count;
-	int	start;
+	size_t	nwords;
 
-	start = 0;
-	count = 0;
+	nwords = 0;
 	while (*s)
 	{
-		if (*s != c && !start && *s != '\0')
+		while (*s == c)
+			s++;
+		if (*s != c && *s != '\0')
 		{
-			count++;
-			start = 1;
+			nwords++;
+			while (*s && *s != c)
+				s++;
 		}
-		else if (*s == c)
-			start = 0;
-		s++;
 	}
-	return (count);
+	return (nwords);
 }
 
-static char	*ft_strdupme(char const *str, int start, int end)
+static size_t	word_length(char const *word, char c)
 {
-	char	*res;
-	int		i;
+	size_t	i;
 
-	res = (char *)malloc(((end - start) + 1) * sizeof(char));
-	if (res == NULL)
-		return (NULL);
 	i = 0;
-	while (start < end)
-	{
-		res[i++] = str[start++];
-	}
-	res[i] = '\0';
-	return (res);
+	while (word[i] && word[i] != c)
+		i++;
+	return (i);
+}
+
+static void	*ft_free(char **forfree, size_t tozero)
+{
+	while (tozero > 0)
+		free(forfree[--tozero]);
+	free(forfree);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**res;
+	size_t	nwords;
+	size_t	wordlength;
 	size_t	i;
-	int		mark;
-	int		j;
+	char	**splited;
 
-	if (s == NULL)
+	if (!s)
+		return (NULL);
+	nwords = count_words(s, c);
+	splited = (char **)malloc((nwords + 1) * sizeof(char *));
+	if (!splited)
 		return (NULL);
 	i = 0;
-	mark = -1;
-	j = 0;
-	res = (char **)malloc((ft_wc(s, c) + 1) * sizeof(char *));
-	if (res == NULL)
-		return (NULL);
-	while (i <= ft_strlen(s))
+	while (i < nwords)
 	{
-		if (s[i] != c && mark < 0 && s[i] != '\0')
-			mark = i;
-		else if ((s[i] == c || s[i] == '\0') && mark >= 0)
-		{
-			res[j] = ft_strdupme(s, mark, i);
-			if (res[j] == NULL)
-			{
-				while (j > 0)
-					free(res[j--]);
-				return (NULL);
-			}
-			j++;
-			mark = -1;
-		}
+		while (*s == c)
+			s++;
+		wordlength = word_length(s, c);
+		splited[i] = ft_substr(s, 0, wordlength);
+		if (!splited[i])
+			return (ft_free(splited, i));
+		s += wordlength;
 		i++;
 	}
-	res[j] = NULL;
-	return (res);
+	splited[i] = NULL;
+	return (splited);
 }
