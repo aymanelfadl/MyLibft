@@ -5,8 +5,8 @@
     "string.h": "c",
     "stdio.h": "c"
   },
-  "[c]": {
-    "editor.defaultFormatter": "keyhr.42-c-format"
-  },
+    "[c]": {
+        "editor.defaultFormatter": "keyhr.42-c-format"
+    },
   "C_Cpp.errorSquiggles": "disabled"
 }
