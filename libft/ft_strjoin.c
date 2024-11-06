@@ -14,9 +14,9 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *res;
-	size_t lens1;
-	size_t lens2;
+	char	*res;
+	size_t	lens1;
+	size_t	lens2;
 
 	lens1 = 0;
 	lens2 = 0;

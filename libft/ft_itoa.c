@@ -32,15 +32,12 @@ char	*ft_itoa(int n)
 	int				isnegga;
 	int				t;
 
+	nb = (unsigned int)n;
+	isnegga = 0;
 	if (n < 0)
 	{
 		nb = -(unsigned int)n;
 		isnegga = 1;
-	}
-	else
-	{
-		nb = (unsigned int)n;
-		isnegga = 0;
 	}
 	t = ft_hm(nb) + isnegga;
 	res = (char *)malloc((t + 1) * sizeof(char));
