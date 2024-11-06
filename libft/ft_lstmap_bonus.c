@@ -39,3 +39,39 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_list);
 }
+void	*f(void *c)
+{
+	char	*res;
+	int		i;
+
+	res = ft_strdup(c);
+	i = 0;
+	while (res[i])
+	{
+		res[i] = ft_toupper(res[i]);
+		i++;
+	}
+	return (res);
+}
+void	del(void *c)
+{
+	free(c);
+}
+#include <stdio.h>
+
+int	main(void)
+{
+	char	a[] = "ayman is the best";
+	char	b[] = "youssef is the best";
+	t_list	*node1;
+	t_list	*node2;
+	t_list	*newList;
+
+	node1 = ft_lstnew(&a);
+	node2 = ft_lstnew(&b);
+	ft_lstadd_back(&node1, node2);
+	newList = ft_lstmap(node1, f, del);
+	printf("%s\n", (char *)newList->content);
+	newList = newList->next;
+	printf("%s\n", (char *)newList->content);
+}
