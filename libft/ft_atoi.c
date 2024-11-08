@@ -6,7 +6,7 @@
 /*   By: aelfadl <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:14 by aelfadl           #+#    #+#             */
-/*   Updated: 2024/11/05 11:24:23 by aelfadl          ###   ########.fr       */
+/*   Updated: 2024/11/08 15:44:31 by aelfadl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ int	ft_atoi(const char *str)
 	int		i;
 	int		sum;
 	int		si;
-	long	long_max;
 
 	si = 1;
 	sum = 0;
 	i = 0;
-	long_max = 9223372036854775807L;
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -44,7 +42,5 @@ int	ft_atoi(const char *str)
 		sum = sum * 10 + (str[i] - '0');
 		i++;
 	}
-	if (sum > long_max)
-		return (0 - (si == 1));
 	return (sum * si);
 }
