@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelfadl <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 11:24:59 by aelfadl           #+#    #+#             */
-/*   Updated: 2024/11/06 14:36:24 by aelfadl          ###   ########.fr       */
+/*   Created: 2024/12/11 13:20:54 by aelfadl           #+#    #+#             */
+/*   Updated: 2024/12/11 13:20:55 by aelfadl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_putchar(char c)
 {
-	unsigned char	*ptr;
-
-	if (count != 0 && (SIZE_MAX / count) < size)
-		return (NULL);
-	ptr = (unsigned char *)malloc(count * size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_memset(ptr, 0, count * size);
-	return ((void *)ptr);
+	return (write(1, &c, 1));
 }

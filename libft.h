@@ -6,7 +6,7 @@
 /*   By: aelfadl <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:58:57 by aelfadl           #+#    #+#             */
-/*   Updated: 2024/11/05 14:58:59 by aelfadl          ###   ########.fr       */
+/*   Updated: 2025/01/14 23:37:28 by aelfadl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <string.h>
+# include <stdarg.h>
 
 /* Libc functions */
 int					ft_isalpha(int c);
@@ -73,5 +75,15 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+/* Printf Functions */
+int					ft_puthexa(long n);
+int					ft_puthexam(long n);
+int					ft_putadress(void *val);
+int					ft_putnbr(long n);
+int					ft_putchar(char c);
+int					ft_putstr(char *s);
+int					ft_printf(const char *str, ...);
+char				*ft_strchr(const char *s, int c);
 
 #endif
