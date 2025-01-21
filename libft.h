@@ -96,4 +96,9 @@ char				*ft_strchr(const char *s, int c);
 /* Get Next Line */
 char	*get_next_line(int fd);
 
+/* Just for me :)*/
+int	ft_isspace(char c);
+
+
+
 #endif

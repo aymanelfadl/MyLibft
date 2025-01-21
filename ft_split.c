@@ -15,18 +15,19 @@
 static size_t	count_words(char const *s, char c)
 {
 	size_t	nwords;
-
+	(void)c;
+	
 	nwords = 0;
-	while (*s)
+	while (*s && *s != '\n')
 	{
-		while (*s == c)
+		while (ft_isspace(*s))
 			s++;
-		if (*s != c && *s != '\0')
-		{
-			nwords++;
-			while (*s && *s != c)
-				s++;
-		}
+        if (*s && *s != '\n')
+        {
+            nwords++;
+            while (*s && !ft_isspace(*s) && *s != '\n')
+                s++;
+        }
 	}
 	return (nwords);
 }
