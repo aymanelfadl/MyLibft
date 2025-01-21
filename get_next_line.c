@@ -84,16 +84,3 @@ char	*get_next_line(int fd)
 	free(buffer);
 	return (line);
 }
-
-// int main()
-// {
-// 	int fd1 = open("test.txt", O_RDONLY);
-// 	char *c ;
-// 	while((c = get_next_line(fd1)))
-// 	{
-// 		printf("%s",c);
-// 		free(c);
-// 		close(fd1);
-
-// 	}
-// }
