@@ -15,6 +15,7 @@
 static size_t	count_words(char const *s, char c)
 {
 	size_t	nwords;
+<<<<<<< HEAD
 
 	nwords = 0;
 	while (*s)
@@ -27,6 +28,21 @@ static size_t	count_words(char const *s, char c)
 			while (*s && *s != c)
 				s++;
 		}
+=======
+	(void)c;
+	
+	nwords = 0;
+	while (*s && *s != '\n')
+	{
+		while (ft_isspace(*s))
+			s++;
+        if (*s && *s != '\n')
+        {
+            nwords++;
+            while (*s && !ft_isspace(*s) && *s != '\n')
+                s++;
+        }
+>>>>>>> origin/libft-with-printf-and-get_next_line
 	}
 	return (nwords);
 }
