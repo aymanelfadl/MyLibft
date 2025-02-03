@@ -18,6 +18,15 @@
 # include <limits.h>
 # include <string.h>
 # include <stdarg.h>
+<<<<<<< HEAD
+=======
+# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+>>>>>>> origin/libft-with-printf-and-get_next_line
 
 /* Libc functions */
 int					ft_isalpha(int c);
@@ -86,4 +95,16 @@ int					ft_putstr(char *s);
 int					ft_printf(const char *str, ...);
 char				*ft_strchr(const char *s, int c);
 
+<<<<<<< HEAD
+=======
+
+/* Get Next Line */
+char	*get_next_line(int fd);
+
+/* Just for me :)*/
+int	ft_isspace(char c);
+
+
+
+>>>>>>> origin/libft-with-printf-and-get_next_line
 #endif

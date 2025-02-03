@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+<<<<<<< HEAD
 static int	ft_isspace(char c)
 {
 	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
@@ -19,6 +20,8 @@ static int	ft_isspace(char c)
 		return (1);
 	return (0);
 }
+=======
+>>>>>>> origin/libft-with-printf-and-get_next_line
 
 int	ft_atoi(const char *str)
 {

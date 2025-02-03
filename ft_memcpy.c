@@ -18,8 +18,15 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*s;
 	size_t			i;
 
+<<<<<<< HEAD
 	if (dst == NULL && src == NULL)
 		return (NULL);
+=======
+	if (!dst && !src)
+		return (NULL);
+	if (dst == src)
+		return (dst);
+>>>>>>> origin/libft-with-printf-and-get_next_line
 	d = (unsigned char *)dst;
 	s = (unsigned char *)src;
 	i = 0;

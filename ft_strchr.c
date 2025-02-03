@@ -17,10 +17,18 @@ char	*ft_strchr(const char *s, int c)
 	while (*s != '\0')
 	{
 		if (*s == (char)c)
+<<<<<<< HEAD
 			return ((char *)s);
 		s++;
 	}
 	if ((char)c == '\0' && *s == '\0')
 		return ((char *)s);
+=======
+			return (char*)(s);
+		s++;
+	}
+	if ((char)c == '\0' && *s == '\0')
+		return (char*)(s);
+>>>>>>> origin/libft-with-printf-and-get_next_line
 	return (NULL);
 }

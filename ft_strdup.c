@@ -20,7 +20,11 @@ char	*ft_strdup(const char *s1)
 
 	len = ft_strlen(s1);
 	i = 0;
+<<<<<<< HEAD
 	ptr = (char *)malloc((len + 1) * sizeof(char));
+=======
+	ptr = malloc(len + 1);
+>>>>>>> origin/libft-with-printf-and-get_next_line
 	if (ptr == NULL)
 		return (NULL);
 	while (i < len)
